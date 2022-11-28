@@ -29,7 +29,7 @@ spec:
         deployment: httpd
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:91ad55f6ee89d7f59a428c6afe36a74c670d82045cf71d2750dc992b1654fd83
+      - image: registry.redhat.io/rhel8/httpd-24:latest
         imagePullPolicy: IfNotPresent
         name: httpd
         ports:
