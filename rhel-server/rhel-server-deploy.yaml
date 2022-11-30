@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rhel-server
+    app.kubernetes.io/component: rhel-server
+    app.kubernetes.io/instance: rhel-server
+  name: rhel-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rhel-server
+  template:
+    metadata:
+      labels:
+        app: rhel-server
+    spec:
+      containers:
+      - image: registry.access.redhat.com/rhel7
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
