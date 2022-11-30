@@ -17,9 +17,17 @@ spec:
         app: rhel-server
     spec:
       containers:
-      - image: registry.access.redhat.com/rhel7
+      - args:
+        - tail
+        - -f
+        - /dev/null
+        image: registry.access.redhat.com/rhel7
         imagePullPolicy: IfNotPresent
-        name: httpd
+        name: rhel-server
+        securityContext:
+          capabilities:
+            drop:
+            - MKNOD
         ports:
         - containerPort: 8080
           protocol: TCP
