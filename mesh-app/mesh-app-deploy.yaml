@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mesh-app
+    app.kubernetes.io/component: mesh-app
+    app.kubernetes.io/instance: mesh-app
+  name: mesh-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mesh-app
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: mesh-app
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - mkdir -p /tmp/test; cd /tmp/test; echo "WELCOME!" > index.html; nohup sleep
+          10 & python -m SimpleHTTPServer 8080
+        image: registry.redhat.io/rhel7
+        imagePullPolicy: Always
+        name: test-app
+        securityContext:
+          capabilities:
+            drop:
+            - MKNOD
+        ports:
+        - containerPort: 8080
+          protocol: TCP

@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: my-vs
+spec:
+  hosts:
+  - "mesh-app.example.org"
+  gateways:
+  - my-gw
+  http:
+  - name: "mesh-app"
+    route:
+    - destination:
+        host: mesh-app.test-istio.svc.cluster.local
+        port:
+          number: 8080
