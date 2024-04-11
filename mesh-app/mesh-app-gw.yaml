@@ -3,8 +3,8 @@ kind: Gateway
 metadata:
   name: my-gw
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: Prune=false
+    argocd.argoproj.io/compare-options: xxxx
+    argocd.argoproj.io/sync-options: xxxx
 spec:
   selector:
     app: istio-ingressgateway
