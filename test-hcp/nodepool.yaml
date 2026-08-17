@@ -1,0 +1,12 @@
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  name: nodepool-worker
+  namespace: test-hcp
+spec:
+  config:
+    - name: worker-dynamic-node
+    - name: cm-chrony-machineconfig
+    - name: cm-max-lun-increase-machineconfig
+    - name: cm-scsimax-machineconfig
+    - name: cm-multipath-machineconfig
