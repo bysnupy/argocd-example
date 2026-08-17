@@ -3,6 +3,8 @@ kind: NodePool
 metadata:
   name: nodepool-worker
   namespace: test-hcp
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false
 spec:
   config:
     - name: worker-dynamic-node
