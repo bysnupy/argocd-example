@@ -7,3 +7,4 @@ spec:
   config:
     - name: worker-dynamic-node
     - name: cm-chrony-machineconfig
+    - name: cm-max-lun-increase-machineconfig
