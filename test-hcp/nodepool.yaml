@@ -4,6 +4,20 @@ metadata:
   name: nodepool-worker
   namespace: test-hcp
 spec:
+  arch: amd64
+  clusterName: example
+  management:
+    autoRepair: false
+    replace:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+      strategy: RollingUpdate
+    upgradeType: InPlace
+  platform:
+    type: None
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.8.0-x86_64
   config:
     - name: worker-dynamic-node
     - name: cm-chrony-machineconfig
